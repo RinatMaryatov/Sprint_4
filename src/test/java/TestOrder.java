@@ -29,7 +29,10 @@ public class TestOrder {
     @Parameterized.Parameters
     public static Object[][] getInformationAboutOrder () {
         return new Object[][]{
-                {"Ринат", "Марятов", "ул.Мысхакское шоссе, 59, кв.18", "Сокольники", "+79915385012", "17.02.2024", "Чик-пирик"},
+                {"Ринат", "Марятов", "ул.Ленина, 52, кв.188", "Сокольники", "+79915385011", "17.02.2024", "Покатаемся!"},
+                {"Игорь", "Марятов", "ул.Мысхакское шоссе, 57, кв.189", "Сокольники", "+79915385012", "18.02.2024", "С ветерком!"},
+                {"Пётр", "Марятов", "ул.Быстрое шоссе, 53, кв.118", "Сокольники", "+79915385013", "19.02.2024", "Врум-врум"},
+                {"Андрей", "Марятов", "ул.Опасное шоссе, 51, кв.128", "Сокольники", "+79915385014", "20.02.2024", "Бип-бип"},
         };
 
     }
@@ -47,16 +50,13 @@ public class TestOrder {
                 .clickOnButtonOrderScooterStart()
                 .generalInformationAboutUser(name, lastName, address, metroStation, number)
                 .clickContinueButton()
-
                 .selectDeliveryDate(date)
                 .selectRentalPeriod()
                 .chooseCheckBoxBlackColor()
                 .setCommentFieldForCourier(comment)
                 .clickButtonOrderScooterFinish()
-
                 .checkTextWantToPlaceOrder()
                 .clickOrderConfirmationButton()
-
                 .checkTextOrderIsProcessed();
     }
     @Test
@@ -69,17 +69,50 @@ public class TestOrder {
                 .clickOnButtonOrderScooterStart()
                 .generalInformationAboutUser(name, lastName, address, metroStation, number)
                 .clickContinueButton()
-
                 .selectDeliveryDate(date)
                 .selectRentalPeriod()
                 .chooseCheckBoxGrayColor()
                 .setCommentFieldForCourier(comment)
                 .clickButtonOrderScooterFinish()
-
                 .checkTextWantToPlaceOrder()
                 .clickOrderConfirmationButton()
-
                 .checkTextOrderIsProcessed();
+    }
+    @Test
+    public void startOrderBlackScooterFromSectionHomePage(){
+        LocatorsOrder locatorsOrder = new LocatorsOrder(chromeRule.getWebDriver());
+        locatorsOrder
+                .open()
+                .clickOnButtonOrderScooterStartTwo()
+                .generalInformationAboutUser(name, lastName, address, metroStation, number)
+                .clickContinueButton()
+                .selectDeliveryDate(date)
+                .selectRentalPeriod()
+                .chooseCheckBoxBlackColor()
+                .setCommentFieldForCourier(comment)
+                .clickButtonOrderScooterFinish()
+                .checkTextWantToPlaceOrder()
+                .clickOrderConfirmationButton()
+                .checkTextOrderIsProcessed();
+
+    }
+    @Test
+    public void startOrderGrayScooterFromSectionHomePage(){
+        LocatorsOrder locatorsOrder = new LocatorsOrder(chromeRule.getWebDriver());
+        locatorsOrder
+                .open()
+                .clickOnButtonOrderScooterStartTwo()
+                .generalInformationAboutUser(name, lastName, address, metroStation, number)
+                .clickContinueButton()
+                .selectDeliveryDate(date)
+                .selectRentalPeriod()
+                .chooseCheckBoxGrayColor()
+                .setCommentFieldForCourier(comment)
+                .clickButtonOrderScooterFinish()
+                .checkTextWantToPlaceOrder()
+                .clickOrderConfirmationButton()
+                .checkTextOrderIsProcessed();
+
     }
 }
 

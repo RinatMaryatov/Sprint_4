@@ -35,7 +35,7 @@ public class TestAnswers {
     public ChromeRule chromeRule = new ChromeRule();
 
     @Test
-    public void AnswersToImportantQuestionsIsCorrect(){
+    public void answersToImportantQuestionsIsCorrect(){
         LocatorsAnswers locatorsQuestions = new LocatorsAnswers(chromeRule.getWebDriver());
 
         locatorsQuestions
